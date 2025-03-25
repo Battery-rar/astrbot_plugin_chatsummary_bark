@@ -4,7 +4,7 @@ import json
 from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
 
-@register("astrbot_plugin_chatsummary", "laopanmemz", "一个基于LLM的历史聊天记录总结插件", "1.0.3")
+@register("astrbot_plugin_chatsummary", "laopanmemz", "一个基于LLM的历史聊天记录总结插件", "1.0.4")
 # 聊天记录总结插件主类，继承自Star基类
 class ChatSummary(Star):
     # 初始化插件实例
@@ -13,24 +13,24 @@ class ChatSummary(Star):
 
     # 注册指令的装饰器。指令名为 消息总结 。注册成功后，发送 `/消息总结` 就会触发这个指令。
     @filter.command("消息总结")  # 消息历史获取与处理
-    async def summary(self, event: AstrMessageEvent, count: int = None):
-        """触发消息总结，命令加空格，后面跟获取聊天记录的数量即可（例如“ /消息总结 20 ”）"""
+    async def summary(self, event: AstrMessageEvent, count: int = None, seq: int = 0):
+        """触发消息总结，命令加空格，后面跟获取聊天记录的数量即可（例如“ /消息总结 20 ”），可选跟序号，从新倒旧，默认从0开始计序号（例如“ /消息总结 20 500 ”）"""
         from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import AiocqhttpMessageEvent
         assert isinstance(event, AiocqhttpMessageEvent)
         client = event.bot
 
         # 检查是否传入了要总结的聊天记录数量，未传入则返回错误，并终止事件传播
         if count is None:
-            yield event.plain_result("未传入要总结的聊天记录数量\n请按照「 /消息总结 [要总结的聊天记录数量] 」格式发送\n例如「 /消息总结 114 」~")
+            yield event.plain_result("未传入要总结的聊天记录数量\n请按照「 /消息总结 [要总结的聊天记录数量] [可选：从序号多少开始总结（默认为0，即最新记录）] 」格式发送\n例如「 /消息总结 114 500」~")
             event.stop_event()
             return
 
         # 构造获取群消息历史的请求参数
         payloads = {
           "group_id": event.get_group_id(),
-          "message_seq": "0",
+          "message_seq": seq,
           "count": count,
-          "reverseOrder": True
+          "reverseOrder": False
         }
 
         # 调用API获取群聊历史消息

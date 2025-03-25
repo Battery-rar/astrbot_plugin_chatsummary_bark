@@ -1,6 +1,6 @@
 name: astrbot_plugin_chatsummary
 desc: 一个基于LLM的历史聊天记录总结插件。
 help: 输入 /消息总结 + [空格] + 要总结的聊天记录数量（仅整数） 触发消息总结。
-version: v1.0.3
+version: v1.0.4
 author: laopanmemz
 repo: https://github.com/laopanmemz/astrbot_plugin_chatsummary
