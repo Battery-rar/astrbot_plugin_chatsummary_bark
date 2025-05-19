@@ -2,6 +2,8 @@
 
 这是一个基于 AstrBot 的插件，通过拉取历史聊天记录，调用大模型接口实现消息总结功能。
 
+（鉴于做的依托石山😭，建议移步使用 [jokeryuyc/astrbot-enhanced-chatsummary](https://github.com/jokeryuyc/astrbot-enhanced-chatsummary) 这个大佬做的重构项目，在此也十分感谢 [jokeryuyc](https://github.com/jokeryuyc) ！）
+
 ## 使用方法
 
 ### 调用消息总结：
@@ -22,7 +24,7 @@ Tips：
     
 2.聊天记录序号总结，例如你想总结从新记录往老记录算的第1000条开始，总结500条聊天记录，那么就输入：[ /消息总结 500 1000 ]
 
-（做的依托啊。。(ㄒoㄒ)/~~）
+（真的是做的依托啊。。(ㄒoㄒ)/~~）
 ## 配置
 
 ### 提示词可自行前往插件配置进行设置，也预置了一份默认提示词，可开箱即用。
