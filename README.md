@@ -1,39 +1,20 @@
-# AstrBot LLM消息总结插件
+﻿# AstrBot LLM消息总结插件
 
-这是一个基于 AstrBot 的插件，通过拉取历史聊天记录，调用大模型接口实现消息总结功能。
+这是一个基于 AstrBot 的插件，通过自动拉取最新一条历史聊天记录，调用大模型接口实现消息总结功能并且发送到Bark。
+用了加密，安全性应该问题不大。
 
-（鉴于做的依托石山😭，建议移步使用 [jokeryuyc/astrbot-enhanced-chatsummary](https://github.com/jokeryuyc/astrbot-enhanced-chatsummary) 这个大佬做的重构项目，在此也十分感谢 [jokeryuyc](https://github.com/jokeryuyc) ！）
+（基于 [astrbot-plugin-chatsummary](https://github.com/laopanmemz/astrbot_plugin_chatsummary) 改的，代码梦到哪写哪）
 
 ## 使用方法
+安装后输入对应的ID、Token和iv和图标URL。
+（有时间和力气和能力的话以后会写一个PushDeer的）
 
-### 调用消息总结：
-
-命令：`/消息总结 [总结消息数量] [可选：从序号多少开始总结（默认为0，即最新记录）]`
-
-示例：
-
-```
-/消息总结 114 500
-```
-
-表示拉取114条历史聊天记录进行消息总结，从新到旧排序第500条消息开始拉取，拉取后正序排序（从旧消息到新消息格式化）。
-
-Tips：
-    
-1.总结消息数量/序号仅支持整数[int]
-    
-2.聊天记录序号总结，例如你想总结从新记录往老记录算的第1000条开始，总结500条聊天记录，那么就输入：[ /消息总结 500 1000 ]
-
-（真的是做的依托啊。。(ㄒoㄒ)/~~）
-## 配置
-
-### 提示词可自行前往插件配置进行设置，也预置了一份默认提示词，可开箱即用。
+### 提示词可自行前往插件配置进行设置，也预置了一份默认提示词。
 
 ## 叠甲
 
-本项目得到了DeepSeek与通义灵码的大力支持（
-Python小白一只，有点屎山，有问题尽管提Issue，求轻点喷QAQ
+本项目得到了ChatGPT与Kimi的大力支持（
+没怎么学过Python的小白，超级💩💩，有问题提Issue，求轻点喷
 
 # 支持
-
 [AstrBot帮助文档](https://astrbot.app)
